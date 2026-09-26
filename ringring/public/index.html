@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>RingRing — call your friends</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ AUTH ============ -->
+<div id="view-auth" class="view">
+  <div class="auth-card">
+    <div class="logo">🔔 RingRing</div>
+    <p class="tagline">Add friends. Call them. That's it.</p>
+    <div class="tabs">
+      <button id="tab-login" class="tab active">Log in</button>
+      <button id="tab-register" class="tab">Sign up</button>
+    </div>
+    <input id="auth-user" type="text" placeholder="Username" autocomplete="username" maxlength="20">
+    <input id="auth-pass" type="password" placeholder="Password" autocomplete="current-password">
+    <div id="auth-error" class="error"></div>
+    <button id="auth-go" class="btn-primary">Log in</button>
+  </div>
+</div>
+
+<!-- ============ MAIN ============ -->
+<div id="view-main" class="view hidden">
+  <header>
+    <div class="logo small">🔔 RingRing</div>
+    <div class="me">
+      <span id="me-name"></span>
+      <button id="btn-logout" class="btn-ghost">Log out</button>
+    </div>
+  </header>
+
+  <div class="add-friend">
+    <input id="add-input" type="text" placeholder="Add friend by username…" maxlength="20">
+    <button id="add-go" class="btn-primary">Add</button>
+  </div>
+  <div id="add-error" class="error"></div>
+
+  <div id="requests" class="section hidden">
+    <h3>Friend requests</h3>
+    <div id="requests-list"></div>
+  </div>
+
+  <div class="section">
+    <h3>Friends <span id="online-count" class="count"></span></h3>
+    <div id="friends-list"></div>
+  </div>
+</div>
+
+<!-- ============ CHAT ============ -->
+<div id="chat-panel" class="hidden">
+  <div class="chat-head">
+    <button id="chat-back" class="btn-ghost">←</button>
+    <span id="chat-name"></span>
+    <span id="chat-online" class="dot"></span>
+    <div class="chat-actions">
+      <button id="chat-audio" class="btn-icon" title="Voice call">📞</button>
+      <button id="chat-video" class="btn-icon" title="Video call">🎥</button>
+    </div>
+  </div>
+  <div id="chat-messages"></div>
+  <div class="chat-input-row">
+    <input id="chat-input" type="text" placeholder="Message…" maxlength="2000">
+    <button id="chat-send" class="btn-primary">Send</button>
+  </div>
+</div>
+
+<!-- ============ INCOMING CALL ============ -->
+<div id="incoming" class="overlay hidden">
+  <div class="incoming-card">
+    <div class="avatar">👤</div>
+    <div id="incoming-name" class="incoming-name"></div>
+    <div id="incoming-type" class="incoming-type"></div>
+    <div class="incoming-btns">
+      <button id="incoming-decline" class="btn-decline">✕</button>
+      <button id="incoming-audio" class="btn-accept audio" title="Answer with audio only">📞</button>
+      <button id="incoming-video" class="btn-accept" title="Answer with video">🎥</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ACTIVE CALL ============ -->
+<div id="call" class="overlay hidden">
+  <video id="remote-video" autoplay playsinline></video>
+  <div id="remote-audio-only" class="hidden">
+    <div class="avatar big">👤</div>
+    <div id="call-peer-name"></div>
+  </div>
+  <video id="local-video" autoplay playsinline muted></video>
+  <div id="call-status">Connecting…</div>
+  <div id="call-timer"></div>
+  <div class="call-btns">
+    <button id="call-mute" class="btn-icon big" title="Mute">🎤</button>
+    <button id="call-camera" class="btn-icon big" title="Camera">📷</button>
+    <button id="call-hangup" class="btn-decline big">✕</button>
+  </div>
+</div>
+
+<div id="toast" class="hidden"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
